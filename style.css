@@ -1,0 +1,106 @@
+html{
+    overflow-x: hidden;
+    max-width: 100%;
+}
+
+body{
+    margin:0 auto;
+    overflow-x: hidden;
+    max-width: 100%;
+}
+
+#inputSection{
+    display:flex;
+    margin-top: 1%;
+    justify-content: center;
+    flex: 1;
+    justify-items: center;
+    flex-wrap: wrap;
+}
+
+input{
+    border: 2px solid black;
+    border-radius: 2%;
+    margin:1%;
+    font-size:1.5rem;
+}
+
+.inputBtn{
+    border: 2px solid black;
+    margin:3%;
+    font-size: 1.5rem;
+    min-width: 80%;
+    color:ghostwhite;
+    background-color: rgb(19, 200, 88);
+}
+
+#editBtn{
+    background-color: rgb(7, 99, 42);
+}
+
+.nDiv{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 2px solid black;
+    flex-wrap: wrap;
+    flex:1;
+    margin-top: 2%;
+}
+p{
+    font-size: 1.2rem;
+    display: flex;
+    width: 80%;
+    text-align: center;
+    /* background-color: aqua; */
+}
+
+.itmBtn{
+    border: 2px solid black;
+    margin:3%;
+    font-size: 1.5rem;
+    min-width: 20%;
+    color:ghostwhite;
+    background-color: rgb(19, 200, 88);
+}
+
+.itmDelBtn{
+    background-color: rgb(227, 15, 15);
+    margin-left: -2%;
+}
+
+.itmSelBtn{
+    background-color: rgb(7, 99, 42);
+    margin-right: -2%;
+}
+
+.selected{
+    background-color: rgb(7, 230, 92);
+}
+
+h3{
+    font-size: 1.5rem;
+    text-align: center;
+}
+
+#saveAndLoad{
+    display:flex;
+    margin-top: 1%;
+    justify-content: center;
+    flex: 1;
+    justify-items: center;
+    flex-wrap: wrap;
+}
+
+.salBtn{
+    border: 2px solid black;
+    margin:3%;
+    font-size: 1.5rem;
+    min-width: 80%;
+    color:ghostwhite;
+    background-color: rgb(19, 200, 88);
+}
+
+#loadBtn{
+    background-color: rgb(7, 99, 42);
+}
