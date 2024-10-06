@@ -15,13 +15,10 @@ function addFun(){
 
     const outputDiv = document.querySelector("#outputSection")
     
-    if(itm.value==""||quan.value<=0||price.value<=0){
-        alert("Please enter valid values.")
-    }else{
-        let subTotal = quan.value * price.value
-        subTotal = subTotal.toFixed(2)
-        count+=1
-        cart.push(subTotal)
+
+    count+=1
+
+
 
         let nDiv = document.createElement("div")
         nDiv.setAttribute("id", count)
@@ -32,6 +29,52 @@ function addFun(){
         
         console.log(itmsObj)
         console.log(itmsObj[b].itm)
+
+        let checkBtn = document.createElement("input")
+        checkBtn.setAttribute("type", "checkbox")
+        checkBtn.classList.add("cBox")
+        checkBtn.addEventListener("click", ()=>{
+            if(checkBtn.checked){
+                console.log("checked")
+                if(itm.value==""||quan.value<=0||price.value<=0){
+                    alert("Please enter valid values.")
+                    checkBtn.checked = false
+                }else{
+                    console.log("else")
+                    let c = "i"+nDiv.id
+                    console.log(itmsObj)
+                    let subTotal = itmsObj[c].quan * itmsObj[c].price
+                    subTotal = subTotal.toFixed(2)
+                    
+                    cart.push(subTotal)
+
+                    delBtn.style.display = "none"
+                    selectBtn.style.display = "none"
+
+                    p.style.textDecoration = 
+                        "line-through"; 
+
+                    totalFun()
+                }
+
+
+
+            }else{
+                console.log("unchecked")
+                let c = "i"+nDiv.id
+                let subTotal = itmsObj[c].quan * itmsObj[c].price
+                let negative = subTotal*-1
+                cart.push(negative)
+
+                delBtn.style.display = "flex"
+                selectBtn.style.display = "flex"
+
+                p.style.textDecoration = 
+                    "none"; 
+
+                totalFun()
+            }
+        })
         
 
         let delBtn = document.createElement("button")
@@ -39,9 +82,7 @@ function addFun(){
         delBtn.classList.add("itmBtn")
         delBtn.classList.add("itmDelBtn")
         delBtn.addEventListener("click",()=>{
-            console.log(subTotal)
-            let negative = subTotal*-1
-            cart.push(negative)
+
 
             outputDiv.removeChild(nDiv)
 
@@ -63,15 +104,22 @@ function addFun(){
             price.value = itmsObj[a].price
             
             
-            editFun(subTotal, cart, nDiv,quan, price, itm, a)
+            editFun(subTotal, cart, nDiv,quan, price, itm, a, p)
 
         })
 
-
-
+       if(quan.value==undefined){
+        quan.value = 0
+        
+       }
+       if(price.value==undefined){
+        price.value = 0
+       }
+       subTotal =  quan.value * price.value
 
         let p = document.createElement("p")
         p.textContent = `${itm.value} x ${quan.value} @ ${price.value} = ${subTotal}`
+        nDiv.appendChild(checkBtn)
         nDiv.appendChild(p)
 
         console.log(nDiv)
@@ -81,7 +129,7 @@ function addFun(){
         outputDiv.appendChild(nDiv)
 
         totalFun()
-    }
+    
 }
 
 function totalFun(){
@@ -101,23 +149,22 @@ cart.forEach(e => {
 
 
 
-function editFun(subTotal, cart, nDiv,quan, price, itm, a){
+function editFun(subTotal, cart, nDiv,quan, price, itm, a, p){
 
     const editBtn = document.querySelector("#editBtn")
 editBtn.addEventListener("click", ()=>{
     nDiv.classList.remove("selected")
 
-    let negative = subTotal*-1
-    cart.push(negative)
-    nDiv.innerHTML=""
-    // delBtn.remove()
-    // editBtn.remove()
+    // let negative = subTotal*-1
+    // cart.push(negative)
+    // nDiv.innerHTML=""
+
 
     subTotal = quan.value * price.value
-    let p = document.createElement("p")
+    // let p = document.createElement("p")
     p.textContent = `${itm.value} x ${quan.value} @ ${price.value} = ${subTotal}`
-    nDiv.appendChild(p)
-    cart.push(subTotal)
+    // nDiv.appendChild(p)
+    // cart.push(subTotal)
 
 
 
@@ -127,7 +174,7 @@ editBtn.addEventListener("click", ()=>{
     itmsObj[a].price = price.value
 
 
-    totalFun()
+    // totalFun()
 
 })
 
